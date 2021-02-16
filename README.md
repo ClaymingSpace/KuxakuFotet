@@ -14,6 +14,7 @@ v0.1: This is the baseline version taken directly from cadCAD demo models for Un
 
 ## cadCAD Specification
 This is the cadCAD diff specification for the Kuxaku Fotet DEX
+
 ![cadCAD Spec](images/kuxaku-fotet-cadcad-spec.png)
 
 Footnotes:
