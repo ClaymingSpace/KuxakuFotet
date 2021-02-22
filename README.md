@@ -9,8 +9,8 @@ v0.1: This is the baseline version taken directly from cadCAD demo models for Un
 
 ## Configuration Management
 * The master branch shall contain the production model.
-* Every prior version will be branched out to its own branch while the next version will inhabit the master branch.
-
+* A staging branch shall exist to stage any changes (prior to being pushed into master) made by developers on their own dev branches.
+* Every prior version will be archived out into its own branch.
 
 ## cadCAD Specification
 This is the cadCAD diff specification for the Kuxaku Fotet DEX
