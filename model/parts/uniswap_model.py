@@ -4,6 +4,18 @@ from .suf_aux import *
 # Policies
 
 def p_actionDecoder(_params, substep, sH, s):
+    """ The Policy Action Decoder inside the PSUB
+    
+    Args:
+        params (dict): Py dict containing sys params
+        substep (int): Int value representing a step within a single timestep
+        sH (list): Py list of all previous states
+        s (dict): Py dict that defines what the state of the system was at
+                            previous timestep or substep
+
+    Returns:
+        action (dict): key as Signal name, and value as any Python type
+    """
     uniswap_events = _params['uniswap_events']
     
     prev_timestep = s['timestep']
@@ -13,6 +25,7 @@ def p_actionDecoder(_params, substep, sH, s):
     #skip the first two events, as they are already accounted for in the initial conditions of the system
     t = prev_timestep + 2 
     
+    # Initiatize all actions in dict
     action = {
         'eth_sold': 0,
         'tokens_sold': 0,
@@ -24,12 +37,16 @@ def p_actionDecoder(_params, substep, sH, s):
         'price_ratio': 0
     }
 
-    #Event variables
+    # Event variables
     event = uniswap_events['event'][t]
+    # Storing all events in the current/previous state (s) into action dict under key 'action_id'
     action['action_id'] = event
 
     if event in ['TokenPurchase', 'EthPurchase']:
+        # Parsing Data from Ethereum Tx data (uniswap_events) under an 'action_key' that
+        # equates to the 'action' dict keys above.
         I_t, O_t, I_t1, O_t1, delta_I, delta_O, action_key = get_parameters(uniswap_events, event, s, t)
+        # Conditional to check sys_param is -1
         if _params['retail_precision'] == -1:
             action[action_key] = delta_I
         elif classifier(delta_I, delta_O, _params['retail_precision']) == "Conv":            #Convenience trader case

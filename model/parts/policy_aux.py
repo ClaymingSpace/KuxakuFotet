@@ -2,6 +2,24 @@ from math import sqrt
 
 
 def get_parameters(uniswap_events, event, s, t):
+    """ Parses Data from Ethereum Tx data into Uniswap Model
+    
+    Parses Data from Ethereum Tx data (uniswap_events)
+    under an 'action_key' that equates to the 'action'
+    dict keys in the main Uniswap Model.
+
+    Args:
+        uniswap_events (dict): Py dict containing all uniswap events from pickle file
+        event (int): Int value representing a step within a single timestep
+        s (dict): Py dict that defines what the state of the system was at
+                            previous timestep or substep
+        t (dict): Py dict of signals or actions from Policy Functions
+
+    Returns:
+        tuple: key as State Variable name, and value as any Python type
+        example:
+
+    """
     if(event == "TokenPurchase"):
         I_t = s['ETH_balance']
         O_t = s['DAI_balance']

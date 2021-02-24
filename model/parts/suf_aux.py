@@ -20,9 +20,9 @@ def addLiquidity_DAI(params, substep, state_history, prev_state, p_input):
     Returns:
         tuple: key as State Variable name, and value as any Python type
         example:
-    """    
-    eth_reserve_pool = int(s['ETH_balance'])
-    dai_reserve_pool = int(s['DAI_balance'])
+    """
+    eth_reserve_pool = int(prev_state['ETH_balance'])
+    dai_reserve_pool = int(prev_state['DAI_balance'])
     if p_input['eth_deposit'] == 0:
         token_amount = 0
     else:
