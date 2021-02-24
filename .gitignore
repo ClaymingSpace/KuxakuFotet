@@ -16,7 +16,8 @@ eggs/
 .eggs/
 lib/
 lib64/
-parts/
+model/__pycache__/
+parts/__pycache__/
 sdist/
 var/
 wheels/
