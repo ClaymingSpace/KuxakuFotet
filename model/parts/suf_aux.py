@@ -4,7 +4,7 @@ from .policy_aux import get_output_amount
 # DAI functions
 
 def addLiquidity_DAI(params, substep, state_history, prev_state, p_input):
-    """ Adds Liquidity to Token Pool
+    """ Adds Liquidity to Token Pool 
 
     Mechanism to add liquidity to a Token's Pool and 
     user receives liquidity tokens
